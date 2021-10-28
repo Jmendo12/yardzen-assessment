@@ -30,3 +30,9 @@ it('fires the given event handler when changed', () => {
 
   expect(onChange).toHaveBeenCalled();
 });
+
+it('allows for a minimum value to be specified', () => {
+  const { getByLabelText } = render(<NumberInput labelText="test label" id="test" minValue={0} />);
+
+  expect(getByLabelText(/test/)).toHaveAttribute('min', "0");
+})

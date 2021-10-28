@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNumericValue } from 'hooks/useNumericValue';
 import { NumberInput } from 'components/NumberInput';
 import { AvailableItemList } from 'components/AvailableItemList';
 import { SelectedItemsList } from 'components/SelectedItemsList';
@@ -19,15 +20,28 @@ const ListsContainer = styled.div`
 `;
 
 export function BudgetCalculator() {
+  const [userBudget, setUserBudget] = useNumericValue();
+
+  const budgetLabelText = userBudget
+    ? "Your budget:"
+    : "Enter your budget below to get started:"
+
   return (
     <MainContainer>
       <NumberInput
-        labelText="Enter your budget below to get started:"
+        labelText={budgetLabelText}
         id="budgetNumberInput"
+        value={userBudget}
+        onChange={({ target }) => setUserBudget(target.value)}
+        minValue={0}
       />
       <ListsContainer>
-        <AvailableItemList renderBudgetPrompt />
-        <SelectedItemsList renderBudgetPrompt />
+        <AvailableItemList
+          renderBudgetPrompt={!userBudget}
+        />
+        <SelectedItemsList
+          renderBudgetPrompt={!userBudget}
+        />
       </ListsContainer>
     </MainContainer>
   )
