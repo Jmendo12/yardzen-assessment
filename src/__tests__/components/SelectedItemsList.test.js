@@ -28,9 +28,9 @@ it('displays headings for the selected item information', () => {
 
   expect(getByText("Type")).toBeInTheDocument();
 
-  expect(getByText(/min/i)).toHaveTextContent("Min price");
+  expect(getByText(/min price/i)).toHaveTextContent("Min price");
 
-  expect(getByText(/max/i)).toHaveTextContent("Max price");
+  expect(getByText(/max price/i)).toHaveTextContent("Max price");
 });
 
 it('displays the name, type, and price information for each item', () => {
@@ -108,3 +108,99 @@ it('the remove button fires the given event when clicked', () => {
 
   expect(onRemoveClick).toHaveBeenCalled();
 });
+
+it('displays headings for aggregated item pricing and budget information', () => {
+  const { getByText } = render(<SelectedItemsList />);
+
+  expect(getByText(/item count/i)).toBeInTheDocument();
+
+  expect(getByText("Budget")).toBeInTheDocument();
+
+  expect(getByText(/min total price/i)).toBeInTheDocument();
+
+  expect(getByText(/max total price/i)).toBeInTheDocument();
+
+  expect(getByText(/budget status/i)).toBeInTheDocument();
+});
+
+it('displays an aggregated item count, budget information, and aggregated pricing information', () => {
+  const { getByText } = render(
+    <SelectedItemsList
+      items={[
+        {
+          name: "test",
+          lowPrice: 100,
+          highPrice: 1000,
+          type: "chairs"
+        },
+        {
+          name: "second test",
+          lowPrice: 50,
+          highPrice: 250,
+          type: "sofas"
+        }
+      ]}
+      budget={10000}
+    />
+  );
+
+  expect(getByText("2")).toBeInTheDocument();
+
+  expect(getByText("150")).toBeInTheDocument();
+
+  expect(getByText("1250")).toBeInTheDocument();
+
+  expect(getByText("10000")).toBeInTheDocument();
+});
+
+it('displays a message indicating the user is under budget', () => {
+  const { getByText } = render(
+    <SelectedItemsList
+      items={[
+        {
+          name: "test",
+          lowPrice: 100,
+          highPrice: 1000,
+          type: "chairs"
+        },
+        {
+          name: "second test",
+          lowPrice: 50,
+          highPrice: 250,
+          type: "sofas"
+        }
+      ]}
+      budget={2000}
+    />
+  );
+
+  expect(getByText(/under budget/i)).toHaveTextContent("$750 under budget");
+
+  expect(getByText(/under budget/i)).toHaveStyle('color: green');
+});
+
+it('renders a message indicating the user is over budget', () => {
+  const { getByText } = render(
+    <SelectedItemsList
+      items={[
+        {
+          name: "test",
+          lowPrice: 100,
+          highPrice: 1000,
+          type: "chairs"
+        },
+        {
+          name: "second test",
+          lowPrice: 50,
+          highPrice: 250,
+          type: "sofas"
+        }
+      ]}
+      budget={100}
+    />
+  );
+
+  expect(getByText(/over budget/i)).toHaveTextContent("$50 over budget");
+
+  expect(getByText(/over budget/i)).toHaveStyle('color: red');
+})
