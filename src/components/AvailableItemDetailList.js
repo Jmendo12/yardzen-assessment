@@ -7,8 +7,8 @@ export function AvailableItemDetailList({ summaryText = "", items = [], onItemSe
       <div>
         <p>Include in design</p>
         <p>Item name</p>
-        <p>Min value</p>
-        <p>Max value</p>
+        <p>Min price</p>
+        <p>Max price</p>
       </div>
       <ul>
         {

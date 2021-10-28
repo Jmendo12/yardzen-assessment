@@ -22,9 +22,9 @@ it('renders the correct headings', () => {
 
   expect(getByText(/name/i)).toHaveTextContent("Item name");
 
-  expect(getByText(/min/i)).toHaveTextContent("Min value");
+  expect(getByText(/min/i)).toHaveTextContent("Min price");
 
-  expect(getByText(/max/i)).toHaveTextContent("Max value");
+  expect(getByText(/max/i)).toHaveTextContent("Max price");
 });
 
 it('displays the name, minimum value, and maximum value for the items', () => {

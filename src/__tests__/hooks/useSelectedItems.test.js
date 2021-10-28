@@ -1,4 +1,4 @@
-import { renderHook, act, waitFor } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react-hooks";
 import { useSelectedItems } from "hooks/useSelectedItems";
 
 it('returns an array of selected items that is initially empty', () => {
