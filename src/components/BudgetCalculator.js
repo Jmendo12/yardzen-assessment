@@ -41,6 +41,7 @@ export function BudgetCalculator() {
         />
         <SelectedItemsList
           renderBudgetPrompt={!userBudget}
+          budget={userBudget}
         />
       </ListsContainer>
     </MainContainer>

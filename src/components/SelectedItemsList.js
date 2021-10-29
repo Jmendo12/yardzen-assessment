@@ -76,8 +76,8 @@ export function SelectedItemsList({ renderBudgetPrompt, items = [], onRemoveClic
                 </button>
                 <p>{item.name}</p>
                 <p>{item.type}</p>
-                <p>{item.lowPrice}</p>
-                <p>{item.highPrice}</p>
+                <p>${item.lowPrice}</p>
+                <p>${item.highPrice}</p>
               </li>
             ))
           }
@@ -90,9 +90,9 @@ export function SelectedItemsList({ renderBudgetPrompt, items = [], onRemoveClic
             <p>Budget</p>
             <p>Budget Status</p>
             <p>{aggregateItemInformation.itemCount}</p>
-            <p>{aggregateItemInformation.minTotalPrice}</p>
-            <p>{aggregateItemInformation.maxTotalPrice}</p>
-            <p>{budget}</p>
+            <p>${aggregateItemInformation.minTotalPrice}</p>
+            <p>${aggregateItemInformation.maxTotalPrice}</p>
+            <p>${budget}</p>
             <BudgetStatusMsg
               status={budgetStatus.status}
             >

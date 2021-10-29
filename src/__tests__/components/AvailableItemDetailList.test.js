@@ -46,12 +46,12 @@ it('displays the name, minimum value, and maximum value for the items', () => {
   );
 
   expect(getByText("test")).toBeInTheDocument();
-  expect(getByText("100")).toBeInTheDocument();
-  expect(getByText("1000")).toBeInTheDocument();
+  expect(getByText("$100")).toBeInTheDocument();
+  expect(getByText("$1000")).toBeInTheDocument();
 
   expect(getByText("second test")).toBeInTheDocument();
-  expect(getByText("50")).toBeInTheDocument();
-  expect(getByText("250")).toBeInTheDocument();
+  expect(getByText("$50")).toBeInTheDocument();
+  expect(getByText("$250")).toBeInTheDocument();
 });
 
 it('displays a radio input to select an item for a group', () => {

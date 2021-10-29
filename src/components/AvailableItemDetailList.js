@@ -25,8 +25,8 @@ export function AvailableItemDetailList({ summaryText = "", items = [], onItemSe
                   onClick={(e) => onItemSelected(e)}
                 />
                 <label htmlFor={itemKeyAndId}>{item.name}</label>
-                <p>{item.lowPrice}</p>
-                <p>{item.highPrice}</p>
+                <p>${item.lowPrice}</p>
+                <p>${item.highPrice}</p>
               </li>
             )
           })

@@ -61,12 +61,12 @@ it('displays a list of all available items for each type', () => {
   );
 
   expect(getByText("test")).toBeInTheDocument();
-  expect(getByText("100")).toBeInTheDocument();
-  expect(getByText("1000")).toBeInTheDocument();
+  expect(getByText("$100")).toBeInTheDocument();
+  expect(getByText("$1000")).toBeInTheDocument();
 
   expect(getByText("second test")).toBeInTheDocument();
-  expect(getByText("50")).toBeInTheDocument();
-  expect(getByText("250")).toBeInTheDocument();
+  expect(getByText("$50")).toBeInTheDocument();
+  expect(getByText("$250")).toBeInTheDocument();
 });
 
 it('fires the geven select function when an item is selected', () => {

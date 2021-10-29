@@ -55,13 +55,13 @@ it('displays the name, type, and price information for each item', () => {
 
   expect(getByText("test")).toBeInTheDocument();
   expect(getByText("chairs")).toBeInTheDocument();
-  expect(getByText("100")).toBeInTheDocument();
-  expect(getByText("1000")).toBeInTheDocument();
+  expect(getByText("$100")).toBeInTheDocument();
+  expect(getByText("$1000")).toBeInTheDocument();
 
   expect(getByText("second test")).toBeInTheDocument();
   expect(getByText("sofas")).toBeInTheDocument();
-  expect(getByText("50")).toBeInTheDocument();
-  expect(getByText("250")).toBeInTheDocument();
+  expect(getByText("$50")).toBeInTheDocument();
+  expect(getByText("$250")).toBeInTheDocument();
 });
 
 it('displays a remove button for each item', () => {
@@ -146,11 +146,11 @@ it('displays an aggregated item count, budget information, and aggregated pricin
 
   expect(getByText("2")).toBeInTheDocument();
 
-  expect(getByText("150")).toBeInTheDocument();
+  expect(getByText("$150")).toBeInTheDocument();
 
-  expect(getByText("1250")).toBeInTheDocument();
+  expect(getByText("$1250")).toBeInTheDocument();
 
-  expect(getByText("10000")).toBeInTheDocument();
+  expect(getByText("$10000")).toBeInTheDocument();
 });
 
 it('displays a message indicating the user is under budget', () => {
@@ -203,4 +203,4 @@ it('renders a message indicating the user is over budget', () => {
   expect(getByText(/over budget/i)).toHaveTextContent("$50 over budget");
 
   expect(getByText(/over budget/i)).toHaveStyle('color: red');
-})
+});
