@@ -27,9 +27,16 @@ const AggregateInfoContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr) 175px;
   column-gap: 10px;
+  align-self: end;
   padding: 0px 40px;
   border-top: 1px solid #000;
 `;
+
+const Container = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+`
 
 export function SelectedItemsList({ renderBudgetPrompt, items = [], onRemoveClick = () => 0, budget = 0 }) {
 
@@ -43,7 +50,7 @@ export function SelectedItemsList({ renderBudgetPrompt, items = [], onRemoveClic
       renderPrompt={renderBudgetPrompt}
       promptText="Enter your budget above to begin selecting items"
     >
-      <div>
+      <Container>
         <HeadingsContainer>
           <h4>Item name</h4>
           <h4>Type</h4>
@@ -85,7 +92,7 @@ export function SelectedItemsList({ renderBudgetPrompt, items = [], onRemoveClic
             {budgetStatus.text}
           </BudgetStatusMsg>
         </AggregateInfoContainer>
-      </div>
+      </Container>
     </BorderedContainerWithHeaderAndPromptMessage>
   );
 }
