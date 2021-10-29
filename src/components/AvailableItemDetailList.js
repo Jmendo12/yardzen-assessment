@@ -21,7 +21,7 @@ export function AvailableItemDetailList({ summaryText = "", items = [], onItemSe
                   type="radio"
                   id={itemKeyAndId}
                   name={summaryText}
-                  value={item}
+                  value={JSON.stringify(item)}
                   onClick={(e) => onItemSelected(e)}
                 />
                 <label htmlFor={itemKeyAndId}>{item.name}</label>

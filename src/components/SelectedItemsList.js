@@ -34,7 +34,7 @@ export function SelectedItemsList({ renderBudgetPrompt, items = [], onRemoveClic
                 key={`selected-item-list-${item.name}-${index}`}
               >
                 <button
-                  onClick={(item) => onRemoveClick(item)}
+                  onClick={() => onRemoveClick(item)}
                 >
                   Remove
                 </button>
