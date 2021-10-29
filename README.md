@@ -1,3 +1,22 @@
+# How to run the project
+
+## Install dependencies
+In the project root directory, run one of the following commands:
+
+#### `yarn install`
+Installs dependencies using the yarn package manager.
+
+#### `npm install`
+Installs dependencies using npm.
+
+## Start the React server
+
+#### `yarn start`
+Starts the server using the yarn package manager.
+
+#### `npm start`
+Starts the server using npm.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
