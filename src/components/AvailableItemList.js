@@ -1,18 +1,10 @@
-import React, { useMemo } from 'react';
+import React from 'react';
+import { useItemTypes } from 'hooks/useItemTypes';
 import { BorderedContainerWithHeaderAndPromptMessage } from 'components/BorderedContainerWithHeaderAndPromptMessage';
 import { AvailableItemDetailList } from 'components/AvailableItemDetailList';
 
 export function AvailableItemList({ renderBudgetPrompt, items = [], onItemSelected = () => 0 }) {
-  /*
-    We'll first get an array of all types with duplicates, and then filter it so there are no duplicates.
-    We use an array instead of a set because we still need to map the types to components.
-  */
-  const itemTypes = useMemo(
-    () => (
-      items.map(item => item.type).filter((itemType, index, itemTypes) => itemTypes.indexOf(itemType) === index)
-    ),
-    [items]
-  );
+  const itemTypes = useItemTypes(items);
 
   return (
     <BorderedContainerWithHeaderAndPromptMessage
