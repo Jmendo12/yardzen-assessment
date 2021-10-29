@@ -146,9 +146,9 @@ it('displays an aggregated item count, budget information, and aggregated pricin
 
   expect(getByText("2")).toBeInTheDocument();
 
-  expect(getByText("$150")).toBeInTheDocument();
+  expect(getByText("$150.00")).toBeInTheDocument();
 
-  expect(getByText("$1250")).toBeInTheDocument();
+  expect(getByText("$1250.00")).toBeInTheDocument();
 
   expect(getByText("$10000")).toBeInTheDocument();
 });

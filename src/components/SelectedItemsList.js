@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useItemPriceAggregations } from 'hooks/useItemPriceAggregations';
 import styled from 'styled-components';
 import { BorderedContainerWithHeaderAndPromptMessage } from 'components/BorderedContainerWithHeaderAndPromptMessage';
 
@@ -8,16 +9,7 @@ const BudgetStatusMsg = styled.p`
 
 export function SelectedItemsList({ renderBudgetPrompt, items = [], onRemoveClick = () => 0, budget = 0 }) {
 
-  const aggregateItemInformation = useMemo(
-    () => (
-      {
-        itemCount: items.length,
-        minTotalPrice: items.reduce((lowSum, { lowPrice }) => lowSum + lowPrice, 0),
-        maxTotalPrice: items.reduce((highSum, { highPrice }) => highSum + highPrice, 0)
-      }
-    ),
-    [items]
-  );
+  const aggregateItemInformation = useItemPriceAggregations(items);
 
   const budgetStatus = useMemo(
     () => {
