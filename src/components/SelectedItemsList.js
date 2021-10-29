@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useItemPriceAggregations } from 'hooks/useItemPriceAggregations';
+import { useBudgetStatus } from 'hooks/useBudgetStatus';
 import styled from 'styled-components';
 import { BorderedContainerWithHeaderAndPromptMessage } from 'components/BorderedContainerWithHeaderAndPromptMessage';
 
@@ -11,36 +12,7 @@ export function SelectedItemsList({ renderBudgetPrompt, items = [], onRemoveClic
 
   const aggregateItemInformation = useItemPriceAggregations(items);
 
-  const budgetStatus = useMemo(
-    () => {
-      if (budget > aggregateItemInformation.maxTotalPrice) {
-        return {
-          text: `$${budget - aggregateItemInformation.maxTotalPrice} under budget`,
-          status: "underBudget"
-        };
-      }
-
-      if (budget < aggregateItemInformation.minTotalPrice) {
-        return {
-          text: `$${aggregateItemInformation.minTotalPrice - budget} over budget`,
-          status: "overBudget"
-        };
-      }
-
-      if (aggregateItemInformation.minTotalPrice <= budget && budget <= aggregateItemInformation.maxTotalPrice) {
-        return {
-          text: `Budget within range`,
-          status: "withinBudget"
-        };
-      }
-
-      return {
-        text: "",
-        status: ""
-      };
-    },
-    [budget, aggregateItemInformation]
-  );
+  const budgetStatus = useBudgetStatus(budget, aggregateItemInformation.minTotalPrice, aggregateItemInformation.maxTotalPrice);
 
   return (
     <BorderedContainerWithHeaderAndPromptMessage

@@ -174,7 +174,7 @@ it('displays a message indicating the user is under budget', () => {
     />
   );
 
-  expect(getByText(/under budget/i)).toHaveTextContent("$750 under budget");
+  expect(getByText(/under budget/i)).toHaveTextContent("$750.00 under budget");
 
   expect(getByText(/under budget/i)).toHaveStyle('color: green');
 });
@@ -200,7 +200,7 @@ it('renders a message indicating the user is over budget', () => {
     />
   );
 
-  expect(getByText(/over budget/i)).toHaveTextContent("$50 over budget");
+  expect(getByText(/over budget/i)).toHaveTextContent("$50.00 over budget");
 
   expect(getByText(/over budget/i)).toHaveStyle('color: red');
 });
